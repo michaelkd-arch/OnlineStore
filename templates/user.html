@@ -1,0 +1,19 @@
+{% include 'header.html' %}
+<body>
+  {% include 'navbar.html' %}
+  {% if current_user.ordered_products %}
+    <main class="product-grid">
+    {% for product in current_user.ordered_products %}
+      <div class="product">
+        <h2 class="great-vibes-regular">{{ product.name }}</h2>
+        <img src="{{ product.image }}" style="height: 200px; width: 200px;">
+        <h3 class="great-vibes-regular">Owned</h3>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </main>
+  {% with current_year=current_year %}
+    {% include 'footer.html' %}
+  {% endwith %}
+</body>
+</html>

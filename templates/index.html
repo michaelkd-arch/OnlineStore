@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+<body>
+  {% with products=products %}
+    {% include 'navbar.html' %}
+  {% endwith %}
+  {% if current_user.is_authenticated %}
+    <main class="product-grid">
+      {% for product in products %}
+        {% if product not in current_user.ordered_products %}
+          <div class="product">
+            <h2 class="great-vibes-regular">{{ product.name }}</h2>
+            <img src="{{ product.image }}" style="height: 200px; width: 200px;">
+            <a href="{{ url_for('add_product', product_id=product.id) }}">Buy {{ product.price }}$</a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </main>
+  {% else %}
+    <main class="product-grid">
+      {% for product in products %}
+        <div class="product">
+          <h2 class="great-vibes-regular">{{ product.name }}</h2>
+          <img src="{{ product.image }}" style="height: 200px; width: 200px;">
+          <a href="{{ url_for('login') }}">Buy {{ product.price }}$</a>
+        </div>
+      {% endfor %}
+    </main>
+  {% endif %}
+  {% with current_year=current_year %}
+    {% include 'footer.html' %}
+  {% endwith %}
+</body>
+</html>

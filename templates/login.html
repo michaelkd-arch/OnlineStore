@@ -1,0 +1,18 @@
+{% include 'header.html' %}
+<body>
+  {% include 'navbar.html' %}
+  <main class="credentials-grid">
+    <div class="credentials">
+      <form action="/login" method="POST">
+        <label class="form-label">Login</label>
+        <input class="form-control" type="email" placeholder="email" name="email">
+        <input class="form-control" type="password" placeholder="password" name="password">
+        <button class="btn btn-primary" type="submit">Login</button>
+      </form>
+    </div>
+  </main>
+  {% with current_year=current_year %}
+    {% include 'footer.html' %}
+  {% endwith %}
+</body>
+</html>

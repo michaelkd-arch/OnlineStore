@@ -1,0 +1,13 @@
+{% include 'header.html' %}
+<body>
+  {% include 'navbar.html' %}
+  <main class="credentials-grid">
+    <div class="credentials">
+      <h2>Thanks, you paid <strong>${{ amount }}.00</strong></h2>
+    </div>
+  </main>
+  {% with current_year=current_year %}
+    {% include 'footer.html' %}
+  {% endwith %}
+</body>
+</html>
